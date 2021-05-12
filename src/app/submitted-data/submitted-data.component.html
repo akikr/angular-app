@@ -1,0 +1,32 @@
+<div class="submitted-data-table">
+  <h1>Registation Form Data</h1>
+  <div *ngIf="data.length > 0 then myData else noData"></div>
+  <ng-template #myData>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of data; index as id">
+          <td>{{ id + 1 }}</td>
+          <td>{{ d.name }}</td>
+          <td>{{ d.email }}</td>
+          <td>
+            <button class="btn btn-info" type="submit" (click)="editData(id+1)">Edit</button> | 
+            <button class="btn btn-danger" type="submit" (click)="removeData(id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  <ng-template #noData>
+    <div class="alert alert-info">
+      <h1>No Data to Show</h1>
+    </div>
+  </ng-template>
+</div>
